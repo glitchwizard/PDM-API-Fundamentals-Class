@@ -15,4 +15,19 @@ Public Class StandAloneForm
         vault.GetVersion(VerMajor, VerMinor)
         MsgBox("Solidworks PDM Professional Version is " + VerMajor.ToString() + "." + VerMinor.ToString())
     End Sub
+
+    Private Sub StandAloneForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim vault As IEdmVault8 = New EdmVault5
+        Dim Views() As EdmViewInfo = {}
+        vault.GetVaultViews(Views, False)
+        VaultsComboBox.Items.Clear()
+        For Each View As EdmViewInfo In Views
+            VaultsComboBox.Items.Add(View.mbsVaultName)
+        Next
+        If VaultsComboBox.Items.Count > 0 Then
+            VaultsComboBox.Text = VaultsComboBox.Items(0)
+        End If
+    End Sub
+
+
 End Class

@@ -69,4 +69,21 @@ Public Class StandAloneForm
         End Try
     End Sub
 
+    Private Sub VersionButton_Click(sender As Object, e As EventArgs) Handles VersionButton.Click
+        'Declare an IEdmVault5 interface object
+        Dim vault5 As IEdmVault5
+
+        'Create an instance of IEdmVault5 interface object
+        vault5 = New EdmVault5()
+
+        'ClientType is a member of the IEdmVault8 interface
+        Dim ClientType As EdmClientType
+        ClientType = vault5.clienttype
+
+        'IsLoggedIn is a member of the IEdmVault5 Interface
+        Dim vault8 As IEdmVault8
+        vault8 = vault5
+        Dim IsLoggedIn As Boolean
+        IsLoggedIn = vault8.IsLoggedIn
+    End Sub
 End Class
